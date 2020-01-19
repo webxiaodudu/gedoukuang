@@ -5,7 +5,7 @@
             left-arrow
             @click-left="leave"
             />
-            <div>
+            <div class="channal-box">
                 这里可以添加自己的频道然后显示在首页上边的标签里<br/>
                 这里可以添加自己的频道然后显示在首页上边的标签里<br/>
                 这里可以添加自己的频道然后显示在首页上边的标签里<br/>
@@ -59,5 +59,9 @@ export default {
     left:0;
     top:0;
     z-index:3;
+}
+.channal-box{
+    height:calc(100% - 120px );
+    box-sizing: border-box;
 }
 </style>
