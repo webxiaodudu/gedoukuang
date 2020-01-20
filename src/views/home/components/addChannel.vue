@@ -5,30 +5,26 @@
             left-arrow
             @click-left="leave"
             />
-            <div class="channal-box">
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                这里可以添加自己的频道然后显示在首页上边的标签里<br/>
-                test
+            <div class="channal-box"  >
+                    asdasdsa
             </div>
     </div>
 </template>
+  
 <script>
 export default {
     data(){
         return {
-
+            num:0,
+            
         }
     },
     methods:{
         leave(){
            this.$emit('leave')
-        }
+        },
+      
+      
     }
 }
 </script>
@@ -48,6 +44,12 @@ export default {
 .addchannal  .van-icon-arrow-left:before{
     font-size:50px;
     font-weight:bold;
+}
+.obox{
+    height:200px;
+    width:200px;
+    background:red;
+    color:#fff;
 }
 </style>
 <style  scoped>

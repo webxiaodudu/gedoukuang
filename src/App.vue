@@ -15,6 +15,10 @@
   
 </template>
 <script>
+document.querySelector('#app').addEventListener('touchstart',function(e){
+  e.stopPropagation();
+  e.preventDefault();
+})
 export default {
   data(){
     return {

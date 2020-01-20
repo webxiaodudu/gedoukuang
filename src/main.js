@@ -7,8 +7,11 @@ import store from './store'
 import 'vant/lib/index.css';
 import 'lib-flexible/flexible';
 import Vant from 'vant';
-Vue.use(Vant);
 
+var VueTouch = require('vue-touch')
+
+Vue.use(Vant);
+Vue.use(VueTouch, {name: 'v-touch'});
 Vue.config.productionTip = false
 
 new Vue({
