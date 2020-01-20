@@ -5,7 +5,7 @@
             left-arrow
             @click-left="leave"
             />
-            <div class="channal-box"  >
+            <div class="channal-box" >
                     asdasdsa
             </div>
     </div>
@@ -20,6 +20,7 @@ export default {
         }
     },
     methods:{
+       
         leave(){
            this.$emit('leave')
         },
