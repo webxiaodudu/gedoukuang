@@ -8,6 +8,7 @@ import 'vant/lib/index.css';
 import 'lib-flexible/flexible';
 import Vant from 'vant';
 
+
 var VueTouch = require('vue-touch')
 
 Vue.use(Vant);

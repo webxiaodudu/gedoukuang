@@ -5,7 +5,9 @@
       </div>
       
       <van-tabs v-model="active" line-height="5">
-        <van-tab v-for="(tab,index) in tabs" :key="index" :title="tab.title">{{tab.content.text}}</van-tab>
+        <van-tab v-for="(tab,index) in tabs" :key="index" :title="tab.title">
+          <channelList/>
+        </van-tab>
       </van-tabs>
       <transition name="van-slide-right">
         <AddChannel @leave="leaveAddChannel" v-show="isShowChannel" />
@@ -15,7 +17,8 @@
 
 <script>
 
-import AddChannel from './components/addChannel' 
+import AddChannel from './components/addChannel'
+import channelList from '@/components/channellist'
 export default {
   name: 'home',
   data(){
@@ -24,34 +27,7 @@ export default {
       active:0,
       tabs:[
         {
-          title:"热推",
-          content:{
-            text:'热推内容'
-          }
-        },
-        {
-          title:"MMA",
-          content:{
-            text:'MMA内容'
-          }
-        },
-         {
-          title:"跆拳道",
-          content:{
-            text:'跆拳道'
-          }
-        },
-          {
-          title:"泰拳",
-          content:{
-            text:'泰拳'
-          }
-        },
-          {
-          title:"拳击",
-          content:{
-            text:'拳击'
-          }
+          title:"热推"
         }
       ]
     }
@@ -60,12 +36,27 @@ export default {
     openAdd(){
       this.isShowChannel=true
     },
-    leaveAddChannel(){
+    leaveAddChannel(checksChannel){
+      //选择频道leave时候的回调
       this.isShowChannel=false;
+      console.log(checksChannel)
+      // if(checksChannel.length){
+      //   this.tabs.forEach(tabNode=>{
+      //    checksChannel = checksChannel.filter(checkNode=>{
+      //       return checkNode.id!=tabNode.id;
+      //     })
+      //   })
+      // }
+      this.tabs=[{
+          title:"热推"
+        }]
+     this.tabs = this.tabs.concat(checksChannel)
+
     }
   },
   components:{
-    AddChannel
+    AddChannel,
+    channelList
   }
  
 }
