@@ -1,10 +1,10 @@
 <template>
     <div class="channel-content">
         <van-pull-refresh v-model="isLoading" :head-height="60"  @refresh="onRefresh"> 
-            <van-loading style="margin-top:20px;"  size="24px" slot="loading"><span style="font-size:18px;">加载中...</span></van-loading>
+            <van-loading style="margin-top:20px;"  size="24px" slot="loading"><span style="font-size:18px;">正在刷新...</span></van-loading>
             <p slot="loosing" style="font-size:18px;">释放即可刷新....</p>
-            <van-list v-model="isMoreLoading" :finished="finished" finished-text="没有更多了"  @load="onLoad" :offset="10" >
-                <div class="channel-wrap">
+            <van-list v-model="isMoreLoading" :finished="finished" finished-text="没有更多了"  @load="onLoad"  >
+                 <van-cell class="channel-wrap">
                         <div class="focus-box">
                             <van-swipe :autoplay="3000" :show-indicators="false" :height="100">
                                 <van-swipe-item>
@@ -14,14 +14,13 @@
                                     <img   src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1579604254181&di=650d86617d69c4ecd3a10e6356af5ef4&imgtype=0&src=http%3A%2F%2Fp0.ssl.cdn.btime.com%2Ft01d12a5d6b87ae836c.gif">
                                 </van-swipe-item>
                             </van-swipe>
-                        </div>
-                        <ul>
-                            <li v-for="item in 100" :key="item">test{{item}}</li>
-                        </ul>
-                </div>
+                        </div> 
+                        </van-cell>
+                        <van-cell size="large" v-for="item in 100" :key="item">test{{item}}</van-cell>
+                        <p slot="loading" style="font-size:18px;padding-bottom:60px;">正在加载...</p>
+                        <p slot="finished" style="font-size:18px;padding-bottom:60px;">加载已完成!</p>
              </van-list>
         </van-pull-refresh>
-   
     </div>
 </template>
 <script>
@@ -32,13 +31,16 @@ export default {
         return {
             finished:false,
             isLoading:false,//下拉刷新loading
-            isMoreLoading:false,//上拉加载loading
+            isMoreLoading:true,//上拉加载loading
         }
     },
     methods:{
       
         onLoad(){
-            
+            setTimeout(()=>{
+                this.loading = false;
+                this.finished=true
+            },3000)
         },
         onRefresh(){
             setTimeout(() => {
@@ -49,11 +51,13 @@ export default {
         }
     },
     created(){
-        http.post('/aaa',{})
+       
     }
 }
 </script>
 <style scoped>
+.channel-content{
+}
 .channel-wrap{
 }
 .channel-wrap .van-swipe-item img{

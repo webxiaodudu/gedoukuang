@@ -30,7 +30,7 @@ export default {
 <style>
 html,body{
   height:100%;
-  overflow:hidden;
+  
   font-family: Helvetica;
 }
 #app{

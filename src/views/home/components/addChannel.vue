@@ -129,7 +129,6 @@ h6{
     position:absolute;
     left:0;
     top:0;
-    z-index:3;
 }
 .channal-box{
     height:calc(100% - 120px );

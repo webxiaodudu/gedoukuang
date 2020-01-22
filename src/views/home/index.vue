@@ -1,17 +1,24 @@
 <template>
   <div class="home">
+    
+    <van-sticky>
       <div class="addBtn"  @click="openAdd" style="z-index:2;">
         <van-icon  name="bars"/>
       </div>
       
-      <van-tabs v-model="active" line-height="5">
+      <van-tabs v-model="active" line-height="5" >
         <van-tab v-for="(tab,index) in tabs" :key="index" :title="tab.title">
-          <channelList/>
         </van-tab>
       </van-tabs>
-      <transition name="van-slide-right">
-        <AddChannel @leave="leaveAddChannel" v-show="isShowChannel" />
-      </transition>
+    </van-sticky>
+    <channelList/>
+    <van-sticky>
+    <transition name="van-slide-right" >
+          <AddChannel @leave="leaveAddChannel" v-show="isShowChannel" />
+        </transition>
+      </van-sticky>
+    
+     
   </div>
 </template>
 
@@ -23,6 +30,7 @@ export default {
   name: 'home',
   data(){
     return {
+      t:0,
       isShowChannel:false,
       active:0,
       tabs:[
@@ -33,12 +41,17 @@ export default {
     }
   },
   methods:{
+   
     openAdd(){
-      this.isShowChannel=true
+      this.isShowChannel=true;
+      window.scrollTo(0,0)
+      document.body.style.overflow="hidden"
+      
     },
     leaveAddChannel(checksChannel){
       //选择频道leave时候的回调
       this.isShowChannel=false;
+      document.body.style.overflow=""
       console.log(checksChannel)
       // if(checksChannel.length){
       //   this.tabs.forEach(tabNode=>{
@@ -66,6 +79,7 @@ export default {
 .home .van-tabs--line .van-tabs__wrap{
   height:120px;
   padding-right:80px;
+  background:#fff;
 }
 .home .van-tab{
   line-height:120px;
@@ -81,9 +95,9 @@ export default {
 }
 .addBtn{
   position: absolute;
-  right:13px;
+  right:15px;
   top:38px;
-  font-size:40px;
+  font-size:50px;
   font-weight:bold;
 }
 </style>
